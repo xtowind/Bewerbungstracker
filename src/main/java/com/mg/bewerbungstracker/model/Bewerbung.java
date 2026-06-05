@@ -1,6 +1,8 @@
 package com.mg.bewerbungstracker.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Bewerbung {
@@ -9,9 +11,15 @@ public class Bewerbung {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Firma darf nicht leer sein")
     private String firma;
+
+    @NotBlank(message = "Titel darf nicht leer sein")
     private String titel;
+
+    @NotBlank(message = "Datum darf nicht leer sein")
     private String datum;
+
     @Enumerated(EnumType.STRING)
     private BewerbungsStatus status;
 
@@ -23,6 +31,10 @@ public class Bewerbung {
         this.titel = titel;
         this.datum = datum;
         this.status = status;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirma() {

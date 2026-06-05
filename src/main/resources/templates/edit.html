@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bewerbung bearbeiten</title>
+</head>
+
+<body>
+
+<h1>Bewerbung bearbeiten</h1>
+
+<form th:action="@{/bewerbungen/update/{id}(id=${bewerbung.id})}" method="post">
+    <input type="text" name="firma" th:value="${bewerbung.firma}">
+    <input type="text" name="titel" th:value="${bewerbung.titel}">
+    <input type="date" name="datum" th:value="${bewerbung.datum}">
+    <select name="status">
+        <option value="OFFEN" th:selected="${bewerbung.status.name() == 'OFFEN'}">
+            OFFEN
+        </option>
+        <option value="BEWORBEN" th:selected="${bewerbung.status.name() == 'BEWORBEN'}">
+            BEWORBEN
+        </option>
+        <option value="INTERVIEW" th:selected="${bewerbung.status.name() == 'INTERVIEW'}">
+            INTERVIEW
+        </option>
+        <option value="ANGEBOT" th:selected="${bewerbung.status.name() == 'ANGEBOT'}">
+            ANGEBOT
+        </option>
+        <option value="ABGELEHNT" th:selected="${bewerbung.status.name() == 'ABGELEHNT'}">
+            ABGELEHNT
+        </option>
+    </select>
+    <br><br>
+    <button type="submit" class="btn btn-success">
+        Änderungen speichern
+    </button>
+    <a href="/" class="btn btn-secondary">
+        Abbrechen
+    </a>
+</form>
+
+</body>
+</html>
