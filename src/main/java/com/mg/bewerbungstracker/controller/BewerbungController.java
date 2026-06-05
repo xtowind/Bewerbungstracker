@@ -24,4 +24,19 @@ public class BewerbungController {
     public Bewerbung speichern(@RequestBody Bewerbung bewerbung) {
         return service.speichern(bewerbung);
     }
+
+    @GetMapping("/{id}")
+    public Bewerbung getById(@PathVariable Long id) {
+        return service.findeNachId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        service.loeschen(id);
+    }
+
+    @PutMapping("/{id}")
+    public Bewerbung update(@PathVariable Long id, @RequestBody Bewerbung bewerbung) {
+        return service.aktualisieren(id, bewerbung);
+    }
 }

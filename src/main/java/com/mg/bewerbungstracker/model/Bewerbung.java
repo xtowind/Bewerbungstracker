@@ -12,12 +12,13 @@ public class Bewerbung {
     private String firma;
     private String titel;
     private String datum;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private BewerbungsStatus status;
 
     public Bewerbung() {
     }
 
-    public Bewerbung(String firma, String titel, String datum, String status) {
+    public Bewerbung(String firma, String titel, String datum, BewerbungsStatus status) {
         this.firma = firma;
         this.titel = titel;
         this.datum = datum;
@@ -48,11 +49,11 @@ public class Bewerbung {
         this.datum = datum;
     }
 
-    public String getStatus() {
+    public BewerbungsStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BewerbungsStatus status) {
         this.status = status;
     }
 }
