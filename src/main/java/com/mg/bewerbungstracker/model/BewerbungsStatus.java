@@ -5,5 +5,5 @@ public enum BewerbungsStatus {
     BEWORBEN,
     INTERVIEW,
     ANGEBOT,
-    ABEGELEHNT
+    ABGELEHNT
 }

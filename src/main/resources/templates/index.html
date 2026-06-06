@@ -8,6 +8,67 @@
 
 <h1>Meine Bewerbungen</h1>
 
+<form method="get">
+    <input type="text" name="suche" placeholder="Firma suchen">
+    <button type="submit" class="btn btn-success">
+        Suchen
+    </button>
+</form>
+
+<form method="get">
+    <select name="status">
+        <option value="">
+            Alle
+        </option>
+        <option value="OFFEN">
+            OFFEN
+        </option>
+        <option value="BEWORBEN">
+            BEWORBEN
+        </option>
+        <option value="INTERVIEW">
+            INTERVIEW
+        </option>
+        <option value="ANGEBOT">
+            ANGEBOT
+        </option>
+        <option value="ABGELEHNT">
+            ABGELEHNT
+        </option>
+    </select>
+    <button class="btn btn-primary" type="submit">
+        Filtern
+    </button>
+</form>
+
+<div class="alert alert-info">
+    Gesamt:
+    <strong th:text="${gesamt}"></strong>
+</div>
+
+<div class="row">
+    <div class="col">
+        Offen:
+        <span th:text="${offen}"></span>
+    </div>
+    <div class="col">
+        Beworben:
+        <span th:text="${beworben}"></span>
+    </div>
+    <div class="col">
+        Interview:
+        <span th:text="${interview}"></span>
+    </div>
+    <div class="col">
+        Angebot:
+        <span th:text="${angebot}"></span>
+    </div>
+    <div class="col">
+        Abgelehnt:
+        <span th:text="${abgelehnt}"></span>
+    </div>
+</div>
+
 <table class="table table-striped">
     <tr>
         <th>Firma</th>
@@ -55,7 +116,7 @@
     <br><br>
 
     <label>Datum:</label>
-    <input type="text" name="datum" required>
+    <input type="date" name="datum" required class="form-control">
 
     <br><br>
 

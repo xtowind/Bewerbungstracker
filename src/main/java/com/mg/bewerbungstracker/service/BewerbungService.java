@@ -1,6 +1,7 @@
 package com.mg.bewerbungstracker.service;
 
 import com.mg.bewerbungstracker.model.Bewerbung;
+import com.mg.bewerbungstracker.model.BewerbungsStatus;
 import com.mg.bewerbungstracker.repository.BewerbungRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -40,5 +41,21 @@ public class BewerbungService {
         vorhandeneBewerbung.setDatum(neueBewerbung.getDatum());
         vorhandeneBewerbung.setStatus(neueBewerbung.getStatus());
         return repository.save(vorhandeneBewerbung);
+    }
+
+    public List<Bewerbung> findeNachStatus(BewerbungsStatus status) {
+        return  repository.findByStatus(status);
+    }
+
+    public List<Bewerbung> sucheFirma(String firma) {
+        return repository.findByFirmaContainingIgnoreCase(firma);
+    }
+
+    public long anzahlGesamt() {
+        return repository.count();
+    }
+
+    public long anzahlStatus(BewerbungsStatus status) {
+        return repository.countByStatus(status);
     }
 }
