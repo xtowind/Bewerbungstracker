@@ -58,4 +58,9 @@ public class BewerbungService {
     public long anzahlStatus(BewerbungsStatus status) {
         return repository.countByStatus(status);
     }
+
+    public List<Bewerbung> sucheFirmaUndStatus(String firma, BewerbungsStatus status) {
+
+        return repository.findByFirmaContainingIgnoreCaseAndStatus(firma, status);
+    }
 }

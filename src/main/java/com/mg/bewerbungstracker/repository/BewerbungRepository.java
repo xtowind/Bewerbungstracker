@@ -10,4 +10,5 @@ public interface BewerbungRepository
     List<Bewerbung> findByStatus(BewerbungsStatus status);
     List<Bewerbung> findByFirmaContainingIgnoreCase(String firma);
     long countByStatus(BewerbungsStatus status);
+    List<Bewerbung> findByFirmaContainingIgnoreCaseAndStatus(String firma, BewerbungsStatus status);
 }

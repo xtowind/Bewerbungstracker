@@ -10,12 +10,6 @@
 
 <form method="get">
     <input type="text" name="suche" placeholder="Firma suchen">
-    <button type="submit" class="btn btn-success">
-        Suchen
-    </button>
-</form>
-
-<form method="get">
     <select name="status">
         <option value="">
             Alle
@@ -36,37 +30,67 @@
             ABGELEHNT
         </option>
     </select>
-    <button class="btn btn-primary" type="submit">
-        Filtern
+    <button type="submit" class="btn btn-primary">
+        Anwenden
     </button>
 </form>
 
-<div class="alert alert-info">
-    Gesamt:
-    <strong th:text="${gesamt}"></strong>
-</div>
+<div class="row mb-4">
 
-<div class="row">
     <div class="col">
-        Offen:
-        <span th:text="${offen}"></span>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Gesamt</h5>
+                <h2 th:text="${gesamt}"></h2>
+            </div>
+        </div>
     </div>
+
     <div class="col">
-        Beworben:
-        <span th:text="${beworben}"></span>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Offen</h5>
+                <h2 th:text="${offen}"></h2>
+            </div>
+        </div>
     </div>
+
     <div class="col">
-        Interview:
-        <span th:text="${interview}"></span>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Beworben</h5>
+                <h2 th:text="${beworben}"></h2>
+            </div>
+        </div>
     </div>
+
     <div class="col">
-        Angebot:
-        <span th:text="${angebot}"></span>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Interview</h5>
+                <h2 th:text="${interview}"></h2>
+            </div>
+        </div>
     </div>
+
     <div class="col">
-        Abgelehnt:
-        <span th:text="${abgelehnt}"></span>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Angebot</h5>
+                <h2 th:text="${angebot}"></h2>
+            </div>
+        </div>
     </div>
+
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Abgelehnt</h5>
+                <h2 th:text="${abgelehnt}"></h2>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <table class="table table-striped">
@@ -83,7 +107,23 @@
         <td th:text="${bewerbung.firma}"></td>
         <td th:text="${bewerbung.titel}"></td>
         <td th:text="${bewerbung.datum}"></td>
-        <td th:text="${bewerbung.status}"></td>
+        <td>
+            <span th:if="${bewerbung.status.name() == 'OFFEN'}" class="badge bg-primary">
+                OFFEN
+            </span>
+            <span th:if="${bewerbung.status.name() == 'BEWORBEN'}" class="badge bg-primary">
+                BEWORBEN
+            </span>
+            <span th:if="${bewerbung.status.name() == 'INTERVIEW'}" class="badge bg-warning">
+                INTERVIEW
+            </span>
+            <span th:if="${bewerbung.status.name() == 'ANGEBOT'}" class="badge bg-success">
+                ANGEBOT
+            </span>
+            <span th:if="${bewerbung.status.name() == 'ABGELEHNT'}" class="badge bg-danger">
+                ABGELEHNT
+            </span>
+        </td>
 
         <td>
             <a th:href="@{/bewerbungen/edit/{id}(id=${bewerbung.id})}" class="btn btn-warning btn-sm">

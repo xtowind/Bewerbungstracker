@@ -21,17 +21,17 @@ public class ViewController {
 
     @GetMapping("/")
     public String index(
-            @RequestParam(required = false)
-            String suche,
-
-            @RequestParam(required = false)
-            BewerbungsStatus status,
+            @RequestParam(required = false) String suche,
+            @RequestParam(required = false) BewerbungsStatus status,
             Model model
     ) {
 
         List<Bewerbung> bewerbungen;
 
-        if (suche != null && !suche.isBlank()) {
+        if (suche != null && !suche.isBlank() && status != null) {
+            bewerbungen = service.sucheFirmaUndStatus(suche, status);
+        }
+        else if (suche != null && !suche.isBlank()) {
             bewerbungen = service.sucheFirma(suche);
         }
         else if (status != null) {
