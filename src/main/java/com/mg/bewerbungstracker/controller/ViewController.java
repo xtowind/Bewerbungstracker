@@ -6,6 +6,7 @@ import com.mg.bewerbungstracker.service.BewerbungService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -48,5 +49,20 @@ public class ViewController {
         model.addAttribute("angebot", service.anzahlStatus(BewerbungsStatus.ANGEBOT));
         model.addAttribute("abgelehnt", service.anzahlStatus(BewerbungsStatus.ABGELEHNT));
         return "index";
+    }
+
+    @GetMapping("/bewerbungen/{id}")
+    public String details(
+            @PathVariable Long id,
+            Model model) {
+
+        Bewerbung bewerbung =
+                service.findeNachId(id);
+
+        model.addAttribute(
+                "bewerbung",
+                bewerbung);
+
+        return "details";
     }
 }

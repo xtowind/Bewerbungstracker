@@ -23,6 +23,11 @@ public class Bewerbung {
     @Enumerated(EnumType.STRING)
     private BewerbungsStatus status;
 
+    @Column(length = 2000)
+    private String notizen;
+
+    private String stellenLink;
+
     public Bewerbung() {
     }
 
@@ -67,5 +72,21 @@ public class Bewerbung {
 
     public void setStatus(BewerbungsStatus status) {
         this.status = status;
+    }
+
+    public void setNotizen(String notizen) {
+        this.notizen = notizen;
+    }
+
+    public String getNotizen() {
+        return notizen;
+    }
+
+    public void setStellenLink(String stellenLink) {
+        this.stellenLink = stellenLink;
+    }
+
+    public String getStellenLink() {
+        return stellenLink;
     }
 }

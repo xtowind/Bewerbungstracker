@@ -99,6 +99,7 @@
         <th>Titel</th>
         <th>Datum</th>
         <th>Status</th>
+        <th>Details</th>
         <th>Bearbeiten</th>
         <th>Löschen</th>
     </tr>
@@ -126,6 +127,12 @@
         </td>
 
         <td>
+            <a th:href="@{/bewerbungen/{id}(id=${bewerbung.id})}" class="btn btn-info btn-sm">
+                Details
+            </a>
+        </td>
+
+        <td>
             <a th:href="@{/bewerbungen/edit/{id}(id=${bewerbung.id})}" class="btn btn-warning btn-sm">
                 Bearbeiten
             </a>
@@ -146,19 +153,19 @@
 <form action="/bewerbungen" method="post">
 
     <label>Firma:</label>
-    <input type="text" name="firma" required>
-
-    <br><br>
+    <input class="form-control" name="firma" required>
 
     <label>Titel:</label>
-    <input type="text" name="titel" required>
+    <input class="form-control" name="titel" required>
 
-    <br><br>
+    <label>Link zur Stellenanzeige:</label>
+    <input class="form-control" name="stellenLink">
+
+    <label>Notizen:</label>
+    <textarea class="form-control" name="notizen" rows="4"></textarea>
 
     <label>Datum:</label>
     <input type="date" name="datum" required class="form-control">
-
-    <br><br>
 
     <label>Status:</label>
 
